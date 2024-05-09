@@ -1,25 +1,28 @@
-import logo from './logo.svg';
-import './App.css';
+import React from 'react';
+import Topbar from './Organism/Topbar';
+import Chat from './Organism/Chat';
+import Contact from './Organism/Contact';
 
-function App() {
+const App = () => {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className='overflow-y-hidden h-screen'>
+      <Topbar />
+      <div className='flex'>
+        <div className='basis-1/3'>
+          {/* Ensure Contact component is within its own scrollable container */}
+          <div className='contact-container'>
+            <Contact />
+          </div>
+        </div>
+        <div className='basis-2/3'>
+          {/* Ensure Chat component is within its own scrollable container */}
+          <div className='chat-container'>
+            <Chat />
+          </div>
+        </div>
+      </div>
     </div>
   );
-}
+};
 
 export default App;
