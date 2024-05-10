@@ -1,5 +1,6 @@
 import React from 'react'
 import profileImage from '../assets/images.jpg'
+import Cont from './Molecule/Cont'
 
 const Contact = () => {
     
@@ -19,6 +20,9 @@ const Contact = () => {
 search
 </span></button>
     </form>
+    <div>
+      <Cont/>
+    </div>
     </div>
   )
 }
