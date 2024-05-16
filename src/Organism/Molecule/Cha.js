@@ -10,12 +10,7 @@ const Cha = () => {
       kuch bhi nahii
     </div> */}
     <div className='flex flex-col h-screen'>
-    <div className='overflow-y-auto mt-16 flex flex-col flex-1'>
-        chat
-    </div>
-    <div className='overflow-y-auto flex flex-col flex-1'>
-        chat
-    </div>
+    
     </div>
     </div>
   )
