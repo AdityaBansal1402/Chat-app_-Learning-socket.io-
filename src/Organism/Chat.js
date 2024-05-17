@@ -1,8 +1,15 @@
 import React, { useState } from 'react'
+import {io} from 'socket.io-client'
 
 const Chat = () => {
   const [text,settext]=useState('');
   const [messages,updatemessage]=useState([]);
+
+  const socket=io('http://localhost:5000');
+  socket.on('conntection',()=>{
+    console.log("hello");
+  })
+
   const addmessages=(mess)=>{
     updatemessage([...messages,{message:mess}])
   }

@@ -5,7 +5,7 @@ import Cont from './Molecule/Cont'
 const Contact = () => {
     
   return (
-    <div className='flex flex-col overflow-y-auto h-screen bg-primary-100'>
+    <div className='flex flex-col overflow-y-auto h-screen bg-primary-100 overflow-x-hidden'>
       <div className='flex bg-secondary-100 p-4 items-center'>
         <img src={profileImage} alt='imagehere' className='rounded-full w-11'/>
         <div className='pl-3'>Aditya Bansal</div>
