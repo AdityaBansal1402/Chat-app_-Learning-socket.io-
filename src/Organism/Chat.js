@@ -23,7 +23,7 @@ const Chat = () => {
         {
           messages.map((m)=>{
             return(
-              <div className='mt-5 bg-primary-300'>
+              <div className='mt-3 break-words max-w-[40%] min-w-[10%] w-fit bg-primary-300 ml-3 p-1 pl-2'>
                 {m.message}
               </div>
             )

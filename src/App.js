@@ -8,17 +8,17 @@ const App = () => {
     <div className='overflow-y-hidden h-screen'>
       <Topbar />
       <div className='flex'>
-        <div className='basis-1/3'>
-          {/* Ensure Contact component is within its own scrollable container */}
-          <div className='contact-container'>
+        <div className='basis-1/4 min-w-60'>
+          {/* Ensure Contact component is within its own scrollable container
+          <div className='contact-container'> */}
             <Contact />
-          </div>
+          {/* </div> */}
         </div>
-        <div className='basis-2/3'>
-          {/* Ensure Chat component is within its own scrollable container */}
-          <div className='chat-container'>
+        <div className='basis-3/4'>
+          {/* Ensure Chat component is within its own scrollable container
+          <div className='chat-container'> */}
             <Chat />
-          </div>
+          {/* </div> */}
         </div>
       </div>
     </div>
