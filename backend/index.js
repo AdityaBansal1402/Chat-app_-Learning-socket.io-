@@ -4,6 +4,6 @@ io=require("socket.io")(5000,{
     }
 })
 
-io.on('Connection', socket=>{
+io.on('connection', socket=>{
     console.log(socket.id);
 })
