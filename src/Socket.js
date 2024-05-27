@@ -8,6 +8,7 @@ useEffect(() => {
 
       socket.on('connect', () => {
         console.log("Connected with ID:", socket.id);
+        // socket.on('emitthis',)
       });
 
       return () => {
