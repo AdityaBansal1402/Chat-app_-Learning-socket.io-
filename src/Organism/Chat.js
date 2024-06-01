@@ -6,20 +6,6 @@ const Chat = () => {
   const [messages, updateMessages] = useState([]);
   const socketRef = useRef(null);
 
-  useEffect(() => {
-    if (!socketRef.current) {
-      const socket = io('http://localhost:5000');
-      socketRef.current = socket;
-
-      socket.on('connect', () => {
-        console.log("Connected with ID:", socket.id);
-      });
-
-      return () => {
-        socket.disconnect();
-      };
-    }
-  }, []);
 
   const addMessages = (message) => {
     updateMessages([...messages, { message }]);
