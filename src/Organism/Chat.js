@@ -4,9 +4,13 @@ import {socket} from '../Socket';
 const Chat = () => {
   const [text, setText] = useState('');
   const [messages, updateMessages] = useState([]);
-  const socketRef = useRef(null);
+  const [idd,setid]=useState("");
 
-
+  useEffect(()=>{
+    socket.on("connect",()=>{
+      setid(socket.id)
+    })
+  },[])
   const addMessages = (message) => {
     updateMessages([...messages, { message }]);
   };
@@ -24,7 +28,7 @@ const Chat = () => {
   return (
     <div className='flex flex-col overflow-y-auto h-screen bg-primary-700'>
       <div className='fixed p-4 bg-secondary-300 w-full'>
-        name
+        your id is {idd}
       </div>
       <div className='mt-16'>
         {messages.map((m, index) => (
