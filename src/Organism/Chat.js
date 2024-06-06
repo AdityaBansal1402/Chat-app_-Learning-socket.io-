@@ -5,14 +5,32 @@ const Chat = () => {
   const [text, setText] = useState('');
   const [messages, updateMessages] = useState([]);
   const [idd,setid]=useState("");
+  const messageref =useRef(null);
 
   useEffect(()=>{
+    changescroll();
+  },[messages])
+  const changescroll=()=>{
+    messageref.current?.scrollIntoView({behavior: 'smooth'});
+  }
+  useEffect(()=>{
+    socket.connect()
     socket.on("connect",()=>{
+      // if(!localStorage.getItem('sock')){
+      //   setid(socket.id)
+      //   localStorage.setItem('sock',idd)
+      // }
       setid(socket.id)
     })
   },[])
+  socket.on('givemess',(m,i)=>{
+    ad(m,i);
+  })
+  const ad=(m,i)=>{
+    updateMessages([...messages, { mess: m, domain: i }]);
+  }
   const addMessages = (message) => {
-    updateMessages([...messages, { message }]);
+    updateMessages([...messages, { mess: message, domain: idd }]);
   };
 
   const handleChange = (e) => {
@@ -21,6 +39,7 @@ const Chat = () => {
 
   const handleClick = (e) => {
     e.preventDefault();
+    socket.emit('addmymess',text);
     addMessages(text);
     setText('');
   };
@@ -30,19 +49,20 @@ const Chat = () => {
       <div className='fixed p-4 bg-secondary-300 w-full'>
         your id is {idd} share this to connect 
       </div>
-      <div className='mt-16'>
+      <div className='mt-16 mb-20 mr-2'>
         {messages.map((m, index) => (
-          <div key={index} className='mt-3 break-words max-w-[40%] min-w-[10%] w-fit bg-primary-300 ml-3 p-1 pl-2'>
-            {m.message}
+          <div key={index} className={`mt-3 break-words max-w-[40%] min-w-[10%] w-fit ${m.domain===idd?' bg-secondary-200 ml-auto':' bg-primary-300'} ml-3 p-1 pl-2`}>
+            {m.mess}
           </div>
         ))}
+        <div ref={messageref}></div>
       </div>
       <div className='w-full fixed bottom-0 p-3 bg-primary-500 flex justify-center items-center'>
         <form className='flex items-center w-full' onSubmit={handleClick}>
           <input
             className='rounded p-1 bg-secondary-50 w-[50%] ml-[7%]'
             type="text"
-            placeholder="Search..."
+            placeholder="Write Message"
             value={text}
             onChange={handleChange}
           />
