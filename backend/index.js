@@ -18,7 +18,14 @@ const io = new Server(server, {
     socket.on('addmymess',(mess)=>{
       socket.broadcast.emit('givemess',mess,socket.id);
     })
+
+    socket.on("join",room=>{
+      s=`joined room ${room}`
+      socket.to(room).emit("joinmess",s);
+    })
   })
+
+
   
   server.listen(4000,()=>{
     console.log("server running at 4000 port");

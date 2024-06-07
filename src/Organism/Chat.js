@@ -3,6 +3,7 @@ import {socket} from '../Socket';
 
 const Chat = () => {
   const [text, setText] = useState('');
+  const [room, setroom] = useState('');
   const [messages, updateMessages] = useState([]);
   const [idd,setid]=useState("");
   const messageref =useRef(null);
@@ -26,6 +27,9 @@ const Chat = () => {
   socket.on('givemess',(m,i)=>{
     ad(m,i);
   })
+  socket.on('givmess',m=>{
+    ad(m,"main")
+  })
   const ad=(m,i)=>{
     updateMessages([...messages, { mess: m, domain: i }]);
   }
@@ -36,12 +40,20 @@ const Chat = () => {
   const handleChange = (e) => {
     setText(e.target.value);
   };
+  const handleChang = (e) => {
+    setroom(e.target.value);
+  };
 
   const handleClick = (e) => {
     e.preventDefault();
     socket.emit('addmymess',text);
     addMessages(text);
     setText('');
+  };
+  const handleClic = (e) => {
+    e.preventDefault();
+    socket.emit('join',room);
+    setroom('');
   };
 
   return (
@@ -57,7 +69,7 @@ const Chat = () => {
         ))}
         <div ref={messageref}></div>
       </div>
-      <div className='w-full fixed bottom-0 p-3 bg-primary-500 flex justify-center items-center'>
+      <div className='w-full fixed bottom-0 p-3 bg-primary-500 flex flex-col justify-center items-center'>
         <form className='flex items-center w-full' onSubmit={handleClick}>
           <input
             className='rounded p-1 bg-secondary-50 w-[50%] ml-[7%]'
@@ -72,6 +84,21 @@ const Chat = () => {
             </span>
           </button>
         </form>
+        <form className='flex items-center w-full' onSubmit={handleClic}>
+          <input
+            className='rounded p-1 bg-secondary-50 w-[50%] ml-[7%]'
+            type="text"
+            placeholder="Join room using code..."
+            value={room}
+            onChange={handleChang}
+          />
+          <button type="submit">
+            <span className="material-symbols-outlined text-white mt-2 ml-3">
+              room
+            </span>
+          </button>
+        </form>
+        
       </div>
     </div>
   );
