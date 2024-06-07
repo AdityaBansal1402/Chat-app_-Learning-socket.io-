@@ -27,7 +27,7 @@ const Chat = () => {
   socket.on('givemess',(m,i)=>{
     ad(m,i);
   })
-  socket.on('givmess',m=>{
+  socket.on('joinmess',m=>{
     ad(m,"main")
   })
   const ad=(m,i)=>{

@@ -21,7 +21,9 @@ const io = new Server(server, {
 
     socket.on("join",room=>{
       s=`joined room ${room}`
-      socket.to(room).emit("joinmess",s);
+      console.log(s);
+      socket.to(room)
+      socket.emit("joinmess",`joined room ${room}`);
     })
   })
 
