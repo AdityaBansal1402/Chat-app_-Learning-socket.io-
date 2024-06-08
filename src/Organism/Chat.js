@@ -62,7 +62,7 @@ const Chat = () => {
       </div>
       <div className='mt-16 mb-20 mr-2'>
         {messages.map((m, index) => (
-          <div key={index} className={`mt-3 break-words max-w-[40%] min-w-[10%] w-fit ${m.domain===idd?' bg-secondary-200 ml-auto':' bg-primary-300'} ml-3 p-1 pl-2`}>
+          <div key={index} className={`mt-3 break-words max-w-[40%] min-w-[10%] w-fit ${m.domain==="main"?"ml-auto mr-auto !bg-gray-700":""} ${m.domain===idd?' bg-secondary-200 ml-auto':' bg-primary-300'} ml-3 p-1 pl-2`}>
             {m.mess}
           </div>
         ))}
