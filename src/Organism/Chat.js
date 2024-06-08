@@ -46,14 +46,13 @@ const Chat = () => {
 
   const handleClick = (e) => {
     e.preventDefault();
-    socket.emit('addmymess',text);
+    socket.emit('addmymess',text,room);
     addMessages(text);
     setText('');
   };
   const handleClic = (e) => {
     e.preventDefault();
     socket.emit('join',room);
-    setroom('');
   };
 
   return (

@@ -15,13 +15,16 @@ const io = new Server(server, {
   });
 
   io.on("connection",socket=>{
-    socket.on('addmymess',(mess)=>{
-      socket.broadcast.emit('givemess',mess,socket.id);
+    socket.on('addmymess',(mess,r)=>{
+      if(r===''){
+        socket.broadcast.emit('givemess',mess,socket.id);
+      }
+      socket.to(r).emit('givemess',mess,socket.id);
     })
 
     socket.on("join",room=>{
       s=`joined room ${room}`
-      console.log(s);
+      // console.log(s);
       socket.to(room)
       socket.emit("joinmess",`joined room ${room}`);
     })
