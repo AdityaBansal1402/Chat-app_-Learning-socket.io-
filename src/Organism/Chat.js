@@ -58,7 +58,7 @@ const Chat = () => {
   return (
     <div className='flex flex-col overflow-y-auto h-screen bg-primary-700'>
       <div className='fixed p-4 bg-secondary-300 w-full'>
-        your id is {idd} share this to connect 
+        your id is {idd} it will be stored later
       </div>
       <div className='mt-16 mb-20 mr-2'>
         {messages.map((m, index) => (
