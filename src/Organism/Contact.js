@@ -14,10 +14,10 @@ const Contact = () => {
       <input
       className='rounded p-1 w-[70%] bg-secondary-50'
         type="text"
-        placeholder="Search..."
+        placeholder="Enter Socket id here for dm..."
       />
       <button type="submit"><span class="material-symbols-outlined">
-Enter a socket id for dm
+search
 </span></button>
     </form>
     <div>
