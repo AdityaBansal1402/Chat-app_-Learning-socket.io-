@@ -17,7 +17,7 @@ const Contact = () => {
         placeholder="Search..."
       />
       <button type="submit"><span class="material-symbols-outlined">
-search
+Enter a socket id for dm
 </span></button>
     </form>
     <div>
