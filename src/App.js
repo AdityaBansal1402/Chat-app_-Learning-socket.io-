@@ -4,7 +4,7 @@ import Contact from './Organism/Contact';
 
 const App = () => {
   return (
-    <div className='overflow-y-hidden h-screen'>
+    <div className='overflow-y-hidden h-screen text-white'>
       <div className='flex'>
         <div className='basis-1/4 min-w-80'>
           {/* Ensure Contact component is within its own scrollable container

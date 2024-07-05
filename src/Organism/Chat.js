@@ -56,8 +56,8 @@ const Chat = () => {
   };
 
   return (
-    <div className='flex flex-col overflow-y-auto h-screen bg-primary-700'>
-      <div className='fixed p-4 bg-secondary-300 w-full'>
+    <div className='flex flex-col overflow-y-auto h-screen bg-zinc-950'>
+      <div className='fixed p-4 bg-zinc-900 w-full'>
         your id is {idd} it will be stored later
       </div>
       <div className='mt-16 mb-20 mr-2'>
@@ -68,10 +68,10 @@ const Chat = () => {
         ))}
         <div ref={messageref}></div>
       </div>
-      <div className='w-full fixed bottom-0 p-3 bg-primary-500 flex flex-col justify-center items-center'>
+      <div className='w-full fixed bottom-0 p-3 bg-zinc-800 flex flex-col justify-center items-center'>
         <form className='flex items-center w-full' onSubmit={handleClick}>
           <input
-            className='rounded p-1 bg-secondary-50 w-[50%] ml-[7%]'
+            className='rounded p-1 bg-zinc-600 w-[50%] ml-[7%]'
             type="text"
             placeholder="Write Message"
             value={text}
@@ -85,7 +85,7 @@ const Chat = () => {
         </form>
         <form className='flex items-center w-full' onSubmit={handleClic}>
           <input
-            className='rounded p-1 bg-secondary-50 w-[50%] ml-[7%]'
+            className='rounded p-1 bg-zinc-600 w-[50%] ml-[7%]'
             type="text"
             placeholder="Join room using code..."
             value={room}
